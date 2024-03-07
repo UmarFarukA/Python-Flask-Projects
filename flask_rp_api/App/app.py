@@ -1,11 +1,14 @@
 from flask import render_template
-import config 
+import config
+from flask_migrate import Migrate
 
 from models import People
 
 app = config.connex_app
+migrate = Migrate(app, config.db)
 
 app.add_api(config.basedir / "swagger.yml")
+
 
 @app.route("/")
 def home():
