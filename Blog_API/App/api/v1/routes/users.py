@@ -94,5 +94,3 @@ def update_user(data, user_id):
 
     except:
         abort(404)
-
-    

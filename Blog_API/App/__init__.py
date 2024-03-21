@@ -28,3 +28,5 @@ def create_app(config=config.config):
     # Registering blueprints
     app.register_blueprint(users)
 
+    return app
+
