@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes::API</title>
+  </head>
+  <body>
+    <h1>People's and their Notes</h1>
+
+    {% if users %} {% for user in users %}
+    <h3>{{ user.fname }} - {{ user.lname }}</h3>
+    <ul>
+      {% for note in user.notes %}
+      <li>{{ note.content }}</li>
+      {% endfor %}
+    </ul>
+    {% endfor %} {% endif %}
+  </body>
+</html>
