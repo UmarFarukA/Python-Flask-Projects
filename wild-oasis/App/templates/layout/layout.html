@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+  </head>
+  <body>
+    <div
+      class="grid grid-cols-[18rem_auto] grid-rows-[5rem_1fr] h-dvh bg-slate-50"
+    >
+      {% block header %}
+      <header class="col-start-2 col-end-3 bg-slate-50 px-3 border-b-2">
+        {% include './layout/header.html' %}
+      </header>
+
+      {% endblock %} {% block aside %}
+      <aside class="col-start-1 col-end-2 bg-slate-50 px-3 border-r-2">
+        {% include './layout/aside.html' %}
+      </aside>
+      {% endblock %}
+
+      <main class="col-start-2 col-end-3">
+        {% block content %}
+        <p>Content Area</p>
+        {% endblock %}
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>

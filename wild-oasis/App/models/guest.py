@@ -1,0 +1,14 @@
+import uuid
+import datetime
+from App.extension import db
+
+
+class Guest(db.Model):
+    __tablename__ = "guests"
+    id = db.Column(db.String(36), primary_key=True, default=uuid.uuid4)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
+    email = db.Column(db.String, nullable=False)
+    nationality = db.Column(db.String, nullable=False)
+    country_flag = db.Column(db.String, nullable=True)
+    fullName = db.Column(db.String, nullable=False)
+    national_id = db.Column(db.Integer, nullable=False)

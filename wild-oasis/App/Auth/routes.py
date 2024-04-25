@@ -11,6 +11,7 @@ from utils import image_name
 
 auth = Blueprint('auth', __name__)
 
+@auth.route("/", methods=['GET'])
 @auth.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -34,7 +35,7 @@ def login():
         else:
             flash("Invalid password", "red")
 
-    return render_template("Auth/login.html", form = login_form)
+    return render_template("home.html", form = login_form)
 
 @auth.route("/signup", methods=["GET", "POST"])
 def sigup():

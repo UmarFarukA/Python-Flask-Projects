@@ -8,13 +8,13 @@ cabin = Blueprint("cabin", __name__)
 @cabin.route("/index", methods=["GET"])
 def index():
 
-    page = request.args.get("page", 1, type = int)
-    per_page = 10
+    # page = request.args.get("page", 1, type = int)
+    # per_page = 10
 
-    # Getting a paginated results
-    cabins = Cabin.query.paginate(page=page, per_page=per_page)
+    # # Getting a paginated results
+    # cabins = Cabin.query.paginate(page=page, per_page=per_page)
 
-    return render_template("cabin/index.html", cabins = cabins)
+    return render_template("cabin/index.html")
 
 
 @cabin.route("/add", methods=["GET", "POST"])
