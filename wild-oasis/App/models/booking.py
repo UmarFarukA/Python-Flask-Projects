@@ -19,7 +19,7 @@ class Booking(db.Model):
     has_breakfast = db.Column(db.Boolean, nullable=False, default=True)
     is_paid = db.Column(db.Boolean, nullable=False, default=False)
     observations = db.Column(db.String, nullable=True)
-    cabin_id = db.Column(db.Integer, db.ForeignKey("cabins_id"), nullable=False)
-    guest_id = db.Column(db.Integer, db.ForeignKey("guests_id"), nullable=False)
+    cabin_id = db.Column(db.String, db.ForeignKey("cabins.id"), nullable=False)
+    guest_id = db.Column(db.String, db.ForeignKey("guests.id"), nullable=False)
     
     

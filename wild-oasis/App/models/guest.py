@@ -12,3 +12,4 @@ class Guest(db.Model):
     country_flag = db.Column(db.String, nullable=True)
     fullName = db.Column(db.String, nullable=False)
     national_id = db.Column(db.Integer, nullable=False)
+    bookings_id = db.relationship("Booking", backref="guest", lazy=True)

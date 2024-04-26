@@ -7,7 +7,7 @@ class LoginForm(FlaskForm):
     """This class defines the login fields"""
     username = StringField("Username", validators=[
         Email(message="Invalid email address"),
-        InputRequired("Username is required")
+        InputRequired("Username is required") 
     ])
 
     password = PasswordField("Password", validators=[

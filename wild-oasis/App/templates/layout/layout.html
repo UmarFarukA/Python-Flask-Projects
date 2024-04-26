@@ -16,9 +16,11 @@
       {% block header %}
       <header class="col-start-2 col-end-3 bg-slate-50 px-3 border-b-2">
         {% include './layout/header.html' %}
+
+        <div id="notification-container" class="fixed top-0 right-0 p-4"></div>
       </header>
 
-      {% endblock %} {% block aside %}
+      {% block message %} {% endblock %} {% endblock %} {% block aside %}
       <aside class="col-start-1 col-end-2 bg-slate-50 px-3 border-r-2">
         {% include './layout/aside.html' %}
       </aside>
@@ -32,5 +34,15 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss-toast/dist/toast.min.js"></script>
+    <script>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                  Toast.show({{ category|tojson }}, {{ message|tojson }});
+              {% endfor %}
+          {% endif %}
+      {% endwith %}
+    </script>
   </body>
 </html>

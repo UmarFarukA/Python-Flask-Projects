@@ -26,16 +26,16 @@ def login():
         user = User.query.filter_by(email = username).first()
 
         if not user:
-            flash(f"No user exists with - {username}", "error")
+            flash("danger", f"No user exists with - {username}")
         
         elif user.check_password(password):
-            flash("Successfully login", "success")
+            flash("success", "Successfully login")
             return redirect(url_for("users.dashboard"))
         
         else:
-            flash("Invalid password", "red")
+            flash("danger", "Invalid password")
 
-    return render_template("home.html", form = login_form)
+    return render_template("Auth/login.html", form = login_form)
 
 @auth.route("/signup", methods=["GET", "POST"])
 def sigup():
@@ -56,13 +56,13 @@ def sigup():
         existing_user = User.query.filter_by(email = email).first()
 
         if existing_user:
-            flash("Email address is already in use", "error")
+            flash("danger", "Email address is already in use")
             return redirect(url_for("Auth.signup"))
         
         # creating new user
         new_user = User(email=email, fname=fname, lname=lname, image=image, password=password)
         new_user.insert()
-        flash("New User created successfully", "green")
+        flash("success", "New User created successfully")
         return redirect(url_for("users.index"))
 
     return render_template("Auth/signup.htm", form = signup_form)

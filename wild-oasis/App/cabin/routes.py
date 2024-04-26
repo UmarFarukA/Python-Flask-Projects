@@ -5,7 +5,7 @@ from utils import image_name
 
 cabin = Blueprint("cabin", __name__)
 
-@cabin.route("/index", methods=["GET"])
+@cabin.route("/cabins", methods=["GET"])
 def index():
 
     # page = request.args.get("page", 1, type = int)

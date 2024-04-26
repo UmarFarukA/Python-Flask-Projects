@@ -11,7 +11,7 @@ def create_app(config=config.Config):
 
     # Initializing extensions install with the app instance
     db.init_app(app)
-    migrate.init_app(app)
+    migrate.init_app(app, db)
     cors.init_app(app)
     mail.init_app(app)
     login_manager.init_app(app)
