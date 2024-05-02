@@ -1,11 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, EmailField
 from wtforms.validators import InputRequired, Email, Length, EqualTo
+from wtforms import validators
 
 
 class LoginForm(FlaskForm):
     """This class defines the login fields"""
-    username = StringField("Username", validators=[
+    username = EmailField("Username", validators=[
         Email(message="Invalid email address"),
         InputRequired("Username is required") 
     ])

@@ -6,7 +6,10 @@
     <li
       class="hover:text-stone-400 text-lg transition-all hover:ease-linear hover:delay-100 hover:translate-x-2 hover:scale-110"
     >
-      <a href="#" class="flex items-center gap-3 hover:text-purple-600">
+      <a
+        href="{{ url_for('dashboard.index') }}"
+        class="flex items-center gap-3 hover:text-purple-600"
+      >
         <img
           src="../static/images/home.svg"
           alt=""

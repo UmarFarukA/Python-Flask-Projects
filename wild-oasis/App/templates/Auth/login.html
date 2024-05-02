@@ -8,6 +8,8 @@
       rel="stylesheet"
       href="{{url_for('static',filename='dist/css/output.css')}}"
     />
+    {{ toastr.include_jquery() }} {{ toastr.include_toastr_css() }} {{
+    toastr.message() }}
   </head>
   <body>
     <div class="flex flex-col max-w-sm mx-auto mt-12">
@@ -22,7 +24,8 @@
         </p>
       </div>
 
-      <form action="" method="POST" class="">
+      <form method="POST">
+        {{ form.csrf_token }}
         <div class="mb-8">
           {{ form.username.label(class="block mb-2 text-sm font-medium
           text-gray-900 dark:text-stone-600") }}
@@ -32,7 +35,7 @@
             focus:border-stone-500 block w-full p-2.5 dark:bg-gray-100
             dark:border-gray-600 dark:placeholder-gray-400 dark:text-stone-700
             dark:focus:ring-stone-500 dark:focus:border-stone-500" ,
-            placeholder="Enter your username" )}} {% if form.username.errors %}
+            placeholder="Enter your username")}} {% if form.username.errors %}
             <ul class="p-1 bg-red-500 rounded-md">
               {% for error in form.username.errors %}
               <li class="text-slate-50">{{ error }}</li>
@@ -66,7 +69,6 @@
               type="checkbox"
               value=""
               class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-              required
             />
           </div>
           <label
@@ -83,6 +85,7 @@
         </div>
       </form>
     </div>
+    {{ toastr.include_toastr_js() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
 </html>

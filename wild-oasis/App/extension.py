@@ -7,18 +7,16 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, jwt_required
 from flask_restful import Resource
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, current_user, login_required, logout_user
+from flask_toastr import Toastr
+from flask_login import LoginManager, current_user, login_required, logout_user, login_user, UserMixin
 from itsdangerous import URLSafeTimedSerializer
 import os
-
-
-
-
 
 db = SQLAlchemy()
 migrate = Migrate()
 cors = CORS()
 bcrypt = Bcrypt()
-login_manager = LoginManager()
 mail = Mail()
 serializer = URLSafeTimedSerializer(os.getenv("SECRET_KEY"))
+toastr = Toastr()
+login_manager = LoginManager()

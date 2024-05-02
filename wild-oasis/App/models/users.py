@@ -1,8 +1,8 @@
 import uuid
 from utils import current_date, ValidationError
-from App.extension import db, bcrypt
+from App.extension import db, bcrypt, UserMixin
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(db.String(36), primary_key=True, default=uuid.uuid4)
     email = db.Column(db.String, unique=True, nullable=False)
