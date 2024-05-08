@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: "Journal API"
+  description: "An API for Journal System"
+  version: 0.0.1
+
+servers:
+  - url: "/api"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - bearerAuth: []
+
+paths:
+  /login:
+    post:
+      summary: "Endpoint for login user to the system"
+      description: "An endpoint for authenticating users"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: "string"
+                password:
+                  type: "string"
+      responses:
+        "200":
+          description: "Successfully login"

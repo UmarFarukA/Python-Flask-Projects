@@ -9,13 +9,16 @@ cabin = Blueprint("cabin", __name__)
 @login_required
 def index():
 
+    form = AddCabinForm()
     page = request.args.get("page", 1, type = int)
     per_page = 10
 
     # Getting a paginated results
     cabins = Cabin.query.paginate(page=page, per_page=per_page)
+    # for cabin in cabins:
+    #     print(cabin)
 
-    return render_template("cabin/index.html", cabins = cabins)
+    return render_template("cabin/index.html", cabins = cabins, form = form)
 
 
 @cabin.route("/add", methods=["GET", "POST"])
@@ -24,11 +27,13 @@ def create():
     """This route returns the add cabin form and add new cabin"""
     addForm = AddCabinForm(request.form)
     if  addForm.validate_on_submit():
-        name = addForm.name.data
-        maxCapacity = addForm.maxCapacity.data
-        price = addForm.price.data
-        discount = addForm.discount.data
+        name = request.form['name']
+        maxCapacity = request.form['maxCapacity']
+        price = request.form['price']
+        discount = request.form['discount']
         image = "cabin_default.png"
+        
+        # print(name, maxCapacity, price, discount)
 
         if discount >= price:
             flash("Discount must be less than the price of cabin", "error")
@@ -40,9 +45,8 @@ def create():
         new_cabin = Cabin(name, maxCapacity, price, discount, image)
 
         new_cabin.insert()
-
+        print("Cabin inserted")
         flash("New cabin successfully created", "success")
-
         return redirect(url_for("cabin.index"))
 
     return render_template("cabin/create.html", form=addForm)

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField, FloatField
+from wtforms import StringField, SubmitField, IntegerField, FloatField, FileField
 from wtforms.validators import InputRequired
 
 
@@ -16,7 +16,7 @@ class AddCabinForm(FlaskForm):
     ])
     discount = IntegerField("Discount", validators=[InputRequired("Cabin discount is required")])
 
-    image = StringField("Image")
+    image = FileField("Image")
 
     add = SubmitField("Add Cabin")
 
