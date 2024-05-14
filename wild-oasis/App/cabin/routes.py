@@ -1,4 +1,5 @@
-from App.extension import Blueprint, render_template, redirect, request, flash, url_for, login_required
+from App.extension import (Blueprint, render_template, redirect, request, 
+                           flash, url_for, login_required, jsonify)
 from App.cabin.forms import AddCabinForm, EditCabinForm
 from App.models.cabin import Cabin
 from utils import image_name
@@ -33,11 +34,10 @@ def create():
         discount = request.form['discount']
         image = "cabin_default.png"
         
-        # print(name, maxCapacity, price, discount)
-
         if discount >= price:
-            flash("Discount must be less than the price of cabin", "error")
-            return redirect(url_for("cabin.index"))
+            # flash("Discount must be less than the price of cabin", "error")
+            # return redirect(url_for("cabin.index"))
+            return False
         
         if "image" in request.files:
             image = image_name("cabin.create", image="image")
@@ -45,9 +45,7 @@ def create():
         new_cabin = Cabin(name, maxCapacity, price, discount, image)
 
         new_cabin.insert()
-        print("Cabin inserted")
-        flash("New cabin successfully created", "success")
-        return redirect(url_for("cabin.index"))
+        return jsonify({"success": True, "redirect_url": url_for("cabin.index")})
 
     return render_template("cabin/create.html", form=addForm)
 

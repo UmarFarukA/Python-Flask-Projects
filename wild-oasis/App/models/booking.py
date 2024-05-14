@@ -1,13 +1,14 @@
 import uuid
 import datetime
 from App.extension import db
+import utils
 
 
 
 class Booking(db.Model):
     __tablename__ = "bookings"
     id = db.Column(db.String(36), primary_key=True, default=uuid.uuid4)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
+    created_at = db.Column(db.Date, nullable=False, default=utils.current_date())
     start_date = db.Column(db.Date, nullable=False)
     end_date = db.Column(db.Date, nullable=False)
     num_nights = db.Column(db.Integer, nullable=False)

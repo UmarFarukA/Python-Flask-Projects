@@ -11,7 +11,7 @@ class Cabin(db.Model):
     maxCapacity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
     discount = db.Column(db.Float, nullable=False)
-    created_on = db.Column(db.DateTime, default=current_date())
+    created_on = db.Column(db.Date, default=current_date())
     bookings_id = db.relationship("Booking", backref="cabin", lazy=True)
 
     def __init__(self, name, maxCapacity, price, discount, image):

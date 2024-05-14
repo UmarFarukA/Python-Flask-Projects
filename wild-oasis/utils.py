@@ -6,12 +6,13 @@ from werkzeug.utils import secure_filename
 
 
 def current_date():
-    date = datetime.now()
-    d = date.day
-    m = date.month
-    y = date.year
-
-    return f"{d}-{m}-{y}"
+    cur_datetime = datetime.now()
+    # d = date.day
+    # m = date.month
+    # y = date.year
+    
+    cur_date = cur_datetime.date().strftime("%Y-%m-%d")
+    return cur_date
 
 def image_name(path, image="default.png"):
     """This function creates and return image name"""

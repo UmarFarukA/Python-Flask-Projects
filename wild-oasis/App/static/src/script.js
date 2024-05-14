@@ -10,6 +10,9 @@ $(document).ready(function () {
       data: formData,
       success: function (res) {
         $("#default-modal").hide();
+        if (res.success) {
+          window.location.href = res.redirect_url;
+        }
       },
       error: function (xhr, status, error) {
         alert("Error: " + xhr.responseText);
