@@ -18,6 +18,7 @@ def create_app(config=config.Config):
     
 
     # imported blueprint modules
+    from App.main import create_main_module as main_module
     from App.Auth import create_auth_module as auth_module
     from App.cabin import create_cabin_module as cabin_module
     from App.booking import create_booking_module as booking_module
@@ -28,6 +29,7 @@ def create_app(config=config.Config):
 
 
     # invoking the modules
+    main_module(app)
     auth_module(app)
     cabin_module(app)
     booking_module(app)
