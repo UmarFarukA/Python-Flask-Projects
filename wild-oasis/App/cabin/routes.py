@@ -91,5 +91,7 @@ def delete_cabin(cabinId):
     cabin_to_delete.delete()
 
     flash("Cabin successfully deleted", "success")
+    
+    return jsonify({"success": True, "redirect_url": url_for("cabin.index")})
 
-    return redirect(url_for("cabin.index"))
+    # return redirect(url_for("cabin.index"))

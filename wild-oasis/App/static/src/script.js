@@ -19,4 +19,12 @@ $(document).ready(function () {
       },
     });
   });
+
+  // $(".cabin-item").click(function () {
+  //   let c = $(this).attr("data-cabin");
+
+  //   $(".btn-delete").click(function () {
+  //     alert(c);
+  //   });
+  // });
 });
