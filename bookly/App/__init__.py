@@ -5,7 +5,7 @@ from App.books.routes import books
 from App.authors.routes import authors
 from App.db.main import init_db
 
-version = "1.0.0"
+version = "1"
 
 @asynccontextmanager
 async def life_span(app: FastAPI):
